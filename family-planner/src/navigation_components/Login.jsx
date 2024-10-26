@@ -1,13 +1,13 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
 function Login() {
-
-  const [loginData, setLoginData] = useState([
-    {name: 'admin', password: 'admin'},
-    {name: 'tim', password: 'Test'},
+  const [loginData] = useState([
+    { name: 'admin', password: 'admin' },
+    { name: 'tim', password: 'Test' },
   ]);
+  const [error, setError] = useState(false);
   const navigate = useNavigate();
 
   function handleSubmit(event) {
@@ -17,39 +17,63 @@ function Login() {
     const username = data.get('username');
     const password = data.get('password');
 
-    const user = loginData.find(user => user.name === username && user.password === password);
-    console.log(user.name);
-    if(user != null) {
+    const user = loginData.find(
+      (user) => user.name === username && user.password === password
+    );
+
+    if (user) {
       console.log("Logged in");
+      setError(false);
       navigate('/dashboard');
+    } else {
+      setError(true);
+      // Reset error state after animation completes
+      setTimeout(() => setError(false), 1000);
     }
-    document.getElementById('username').style = "border: 1px solid red";
-    document.getElementById('password').style = "border: 1px solid red";
-    
-    
   }
 
-
   return (
-    <body className="login-body">
-    <div className="login-container">
-      <h1 className="login-label">Login</h1>
+    <div className="login-body">
+      <div className="login-container">
+        <h1 className="login-label">Login</h1>
 
-      <form onSubmit={handleSubmit} className="login-form">
-        <div className="username-container">
-          <label htmlFor="username" className="input-field-description">Username</label>
-          <input type="text" id="username" name="username" />
-        </div>
+        <form onSubmit={handleSubmit} className="login-form">
+          <div className="username-container">
+            <label htmlFor="username" className="input-field-description">
+              Username
+            </label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              className={error ? 'error-shake' : ''}
+            />
+          </div>
 
-        <div className="password-container">
-          <label htmlFor="password" className="input-field-description">Password</label>
-          <input type="password" id="password" name="password" />
-        </div>
+          <div className="password-container">
+            <label htmlFor="password" className="input-field-description">
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              className={error ? 'error-shake' : ''}
+            />
+          </div>
 
-        <button type="submit" className="login-button">Login</button>
-      </form>
+          {error && (
+            <div className="error-message">
+              Invalid username or password
+            </div>
+          )}
+
+          <button type="submit" className="login-button">
+            Login
+          </button>
+        </form>
+      </div>
     </div>
-    </body>
   );
 }
 

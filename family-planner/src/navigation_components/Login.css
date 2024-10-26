@@ -1,111 +1,246 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --primary-color: #6366f1;
+  --primary-dark: #4f46e5;
+  --error-color: #ef4444;
+  --text-color: rgba(255, 255, 255, 0.87);
+  --bg-dark: #242424;
+  --bg-card: #2a2a2a;
+  --border-color: #333;
+}
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body, html {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: var(--bg-dark);
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 .login-body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  margin: 0;
-  background: linear-gradient(135deg, #6b73ff 0%, #000dff 100%);
-  font-family: 'Arial', sans-serif;
+  min-height: 100vh;
+  
 }
 
 .login-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: #f0f0f5;
-  padding: 2em;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  width: 300px;
+  background: var(--bg-card);
+  padding: 2.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid var(--border-color);
+  animation: fadeInUp 0.8s ease-out;
 }
 
 .login-label {
-  display: block;
-  font-size: 3em;
-  color: #6b73ff;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  background: linear-gradient(120deg, var(--primary-color), var(--primary-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeInDown 0.8s ease-out;
 }
 
 .login-form {
-  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-.username-container, .password-container {
-  margin-top: 1em;
-  justify-content: center;
-  align-items: center;
+.username-container,
+.password-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.username-container {
+  animation-delay: 0.2s;
+  animation-fill-mode: both;
+}
+
+.password-container {
+  animation-delay: 0.4s;
+  animation-fill-mode: both;
 }
 
 .input-field-description {
-  margin: 15px;
-  font-size: 1.2em;
-  color: #6b73ff; 
+  color: var(--text-color);
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-left: 0.25rem;
 }
 
-#username, #password {
-  width: 100%;
-  margin: 10px 0;
-  padding: 12px;
-  font-size: 1.2em;
-  font-weight: 400;
-  border-radius: 5px;
-  border: 2px solid #ddd;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: border-color 0.3s;
-  color: #6b73ff;
+input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  color: var(--text-color);
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
 
-#username:focus, #password:focus {
-  border-color: #6b73ff;
+input:focus {
   outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
 }
 
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 5px rgba(109, 56, 255, 0.5);
-  }
-  50% {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(109, 56, 255, 0.7);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 5px rgba(109, 56, 255, 0.5);
-  }
+input[style*="border: 1px solid red"] {
+  border-color: var(--error-color) !important;
+  animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 }
 
 .login-button {
-  width: 100%;
-  margin-top: 1em;
-  padding: 12px;
-  font-size: 1.2em;
-  border-radius: 5px;
-  border: none;
-  background-color: rgb(109, 56, 255);
+  background: var(--primary-color);
   color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  animation: fadeIn 0.5s ease-out 0.6s both;
 }
 
 .login-button:hover {
-  background-color: rgb(89, 36, 235);
-  animation: pulse 2s infinite;
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
 }
 
+.login-button:active {
+  transform: translateY(0);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translateX(-1px);
+  }
+  20%, 80% {
+    transform: translateX(2px);
+  }
+  30%, 50%, 70% {
+    transform: translateX(-3px);
+  }
+  40%, 60% {
+    transform: translateX(3px);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 2rem;
+    margin: 1rem;
+  }
+
+  .login-label {
+    font-size: 1.75rem;
+  }
+}
+
+
+.error-shake {
+  border-color: var(--error-color) !important;
+  animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+.error-message {
+  color: var(--error-color);
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  animation: fadeInUp 0.3s ease-out;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* Update der shake Animation für smoothere Bewegung */
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-4px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(4px);
+  }
+}
+
+/* Zusätzliche Animation für das Erscheinen der Fehlermeldung */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Optional: Füge einen smooth transition für die Input-Felder hinzu */
+input {
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+input.error-shake {
+  background: rgba(239, 68, 68, 0.05);
+}
+
+/* Optional: Verbessere den Hover-Effekt der Input-Felder */
+input:hover:not(:focus):not(.error-shake) {
+  border-color: rgba(99, 102, 241, 0.5);
+}
