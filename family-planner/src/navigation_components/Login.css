@@ -13,7 +13,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
+.login-body {
   display: flex;
   justify-content: center;
   align-items: center;
