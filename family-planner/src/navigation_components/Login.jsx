@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
+import './Login.css';
 
 function Login() {
 
@@ -30,6 +31,7 @@ function Login() {
 
 
   return (
+    <body className="login-body">
     <div className="login-container">
       <h1 className="login-label">Login</h1>
 
@@ -47,6 +49,7 @@ function Login() {
         <button type="submit" className="login-button">Login</button>
       </form>
     </div>
+    </body>
   );
 }
 
