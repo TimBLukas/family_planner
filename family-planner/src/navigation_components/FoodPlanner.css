@@ -1,0 +1,184 @@
+:root {
+  --bg-card: #2a2a2a;
+  --border-color: #333;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f9f9f9;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, #6b73ff 0%, #000dff 100%);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+.main-container {
+  margin-top: 0rem;
+  display: block;
+  justify-content: center;
+}
+.container-header {
+  display: flex;          /* Flexbox für Header */
+  justify-content: space-between; /* Platz zwischen den Elementen */
+  align-items: center;    /* Vertikale Zentrierung */
+  width: 100%;            /* Maximale Breite */
+  margin-bottom: 0rem;    /* Abstand nach unten */
+  padding: 0 1rem;       /* Innenabstand */
+}
+.description-container {
+  display: inline-block;
+  margin-left: 5rem;
+  margin-right: 5rem;
+  margin-bottom: 0;
+}
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, #6366f1, #4f46e5);
+  color: rgba(255, 255, 255, 0.8);
+  -webkit-background-clip: text;
+  text-align: center;
+  margin-bottom: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  margin-top: 0.2rem;
+  margin-bottom: 1.5rem;
+}
+.week-container{
+  display: block;        /* Zentriert die Elemente */
+  width: 100%;            /* Maximale Breite */
+  height: auto;           /* Automatische Höhe */
+  padding: .5rem;         /* Innenabstand */
+  box-sizing: border-box; /* Einschließlich Padding in der Breite */
+  overflow-x: auto;       /* Horizontales Scrollen aktivieren */
+}
+.weekday-title {
+  font-size: 1rem;
+  color: #fff;
+  margin: 0;
+  font-weight: 600;
+}
+.weekly-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  grid-template-rows: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+  width: 100%;
+  margin: 0 auto;
+  overflow-x: auto; /* Horizontales Scrollen aktivieren */
+  overflow-y: auto; /* Vertikales Scrollen aktivieren */
+}
+.weekly-grid::-webkit-scrollbar {
+  height: 8px; /* Höhe des horizontalen Scrollbalkens */
+}
+
+.regenerate-btn {
+  background: linear-gradient(90deg, #22c55e, #16a34a); /* Grüner Farbverlauf für Frische */
+  color: white;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3); /* Grüner Schatten */
+}
+
+.day-container {
+  flex: 0 0 auto; /* Verhindert, dass die Container sich verengen */
+  width: 250px; /* Feste Breite für die Container */
+  min-height: 300px; /* Mindesthöhe für den Inhalt */
+  background: var(--bg-card, #2a2a2a);
+  border-radius: 0.75rem;
+  padding: .5rem; /* Innenabstand des Containers */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  margin-right: .5rem;
+}
+.day-container:last-child {
+  margin-right: 0; /* Entferne den rechten Abstand beim letzten Container */
+}
+.day-container-4{
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+.weekday-label-and-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.regenerate-btn:hover {
+  transform: translateY(-3px); /* Leichte Anhebung beim Hover */
+  background: linear-gradient(90deg, #16a34a, #22c55e); /* Umkehrung des Farbverlaufs */
+  box-shadow: 0 6px 15px rgba(34, 197, 94, 0.5);
+}
+
+.generate-week-btn {
+  background: linear-gradient(90deg, #6366f1, #4f46e5);
+  color: white;
+  border: 1px solid hsla(0, 0%, 100%, 0.603);
+  padding: .5rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  margin-top: .5rem;
+}
+
+.generate-week-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 15px rgba(59, 130, 246, 0.5);
+}
+
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ingredientPop {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .food-card {
+    padding: 1rem;
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .ingredients-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+}
