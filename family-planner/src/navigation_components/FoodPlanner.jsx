@@ -66,9 +66,14 @@ const FoodPlanner = () => {
           <h1 className="title">Food Planner</h1>
           <h2 className="subtitle">Essensvorschläge für die Woche</h2>
         </div>
-        <button className="generate-week-btn" onClick={getRandomFoods}>
-          Neue Woche generieren
-        </button>
+        <div className="button-container">
+          <button className="generate-week-btn" onClick={getRandomFoods}>
+            Neue Woche generieren
+          </button>
+          <button className="return-btn" onClick={() => window.history.back()}>
+            Zurück
+          </button>
+        </div>
       </div>
       <div className="week-container">
         <div className="weekly-grid">

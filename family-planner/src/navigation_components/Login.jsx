@@ -5,7 +5,7 @@ import './Login.css';
 function Login() {
   const [loginData] = useState([
     { name: 'admin', password: 'admin' },
-    { name: 'tim', password: 'Test' },
+    { name: 'tim', password: 'tim' },
   ]);
   const [error, setError] = useState(false);
   const navigate = useNavigate();
