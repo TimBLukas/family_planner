@@ -1,0 +1,49 @@
+
+.message-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  animation: messageSlide 0.3s ease-out;
+}
+
+.message-wrapper.own-message {
+  justify-content: flex-end;
+}
+.message {
+  max-width: 70%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 0.75rem;
+}
+
+.own-message .message {
+  background: rgba(79, 70, 229, 0.6);
+}
+
+.message-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.user-icon {
+  width: 16px;
+  height: 16px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.sender-name {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.875rem;
+}
+
+.timestamp {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.75rem;
+}
+
+.message-content {
+  color: white;
+  margin: 0;
+}

@@ -10,16 +10,24 @@ function Dashboard() {
   function changeToFoodPlanner() {
     navigate("/dashboard/foodPlanner");
   }
+
+  function changeToMessageRoom() {
+    navigate("/dashboard/chatRoom");
+  }
+
+  function changeToFoodCalendar() {
+    navigate("/dashboard/calendar");
+  }
   
   return (
     <div className="main-container">
       <div className="header-section">
         <h1>Dashboard</h1>
-        <p>Welcome to the Family Planner Dashboard!</p>
+        <span>Welcome to the Family Planner Dashboard!</span>
       </div>
 
       <div className="dashboard-grid">
-        <div className="dashboard-menucard">
+        <div className="dashboard-menucard" onClick={changeToFoodCalendar}>
           <Calendar width={60} height={60} />
           <h2 className="dashboard-menucard-title">Kalender</h2>
         </div>
@@ -29,7 +37,7 @@ function Dashboard() {
           <h2 className="dashboard-menucard-title">Essenplaner</h2>
         </div>
 
-        <div className="dashboard-menucard" >
+        <div className="dashboard-menucard" onClick={changeToMessageRoom}>
           <MessageCircle width={60} height={60} />
           <h2 className="dashboard-menucard-title">Chatroom</h2>
         </div>
